@@ -1,0 +1,17 @@
+{% extends 'blogposts/base.html' %}
+{% load bootstrap4 %}
+{% block content %}
+{%for post in posts%}
+	<div class="border border-info rounded" style="margin:20px 20% 20px 20px; padding:20px 0px 20px 20px;" >
+		<div class="border-bottom border-info"><h2>{{post.title}}</h2></div>
+		<div><h5>{{post.content}}</h5></div>
+		<div>
+			<h5>{{post.author}}</h5>
+			<h5>{{post.date_posted}}</h5>
+		</div>
+		<a class="btn btn-danger" href="{% url 'delete' post.pk %}" role="button">Delete</a>
+		<a class="btn btn-warning" href="{% url 'update' post.pk %}" role="button">Update</a>
+	</div>
+{%endfor%}
+
+{% endblock content %}
